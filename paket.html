@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Akses Harga Khusus | NEXIO</title>
+
+    <style>
+        body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #222;
+  padding-top: 0px;
+}
+
+
+
+/* glow biru + merah */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 20% 25%, rgba(0, 140, 255, 0.22), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 60, 0.20), transparent 50%);
+
+  z-index: 0;
+}
+
+.judul{
+
+    flex:1;
+
+    text-align:center;
+
+    color:#e3eeff;
+
+    margin:0;
+
+    font-size:38px;
+
+}
+
+.header-paket{
+
+    max-width:1200px;
+
+    margin:25px auto;
+
+    padding:0 20px;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.paket-container{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:20px;
+}
+
+.paket-card{
+    width:280px;
+    min-height:630px; 
+
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    transition:.25s;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.judul-start{
+
+    margin:0;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    top:6px;
+
+}
+
+
+.paket-list{
+    list-style: none;
+    padding-left: 0;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.paket-list li{
+
+    font-size:15px;
+
+    line-height:1.45;
+
+}
+
+h4{
+
+    font-size:19px;
+
+    margin:15px 0 8px;
+
+}
+
+.paket-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 25px rgba(0,0,0,0.25);
+}
+
+.btn-paket{
+    display:inline-block;
+    margin-top:auto;
+    background:#0d47a1;
+    color:white;
+    text-decoration:none;
+    padding:14px 35px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.2s;
+    box-shadow:0 6px 12px rgba(0,0,0,.2);
+}
+
+.btn-paket:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 20px rgba(0,0,0,.3);
+}
+
+.btn-paket:active{
+    transform:scale(.96);
+}
+
+/* ========================= */
+/* BACK BUTTON */
+/* ========================= */
+
+.back-wrapper{
+    max-width:1200px;
+    margin:50px auto 0;
+    padding:0 20px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 22px;
+
+    background:#0F2036;
+
+    color:#27D9FF;
+
+    text-decoration:none;
+
+    border:2px solid #27D9FF;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 12px rgba(39,217,255,.25);
+}
+
+.back-btn:hover{
+
+    background:#27D9FF;
+
+    color:#081521;
+
+    transform:translateX(-4px);
+
+    box-shadow:
+        0 0 18px rgba(39,217,255,.45);
+
+}
+
+.ribbon-wrap{
+
+    position:relative;
+
+    margin:-20px -20px 25px -20px;
+
+    border-radius:15px 15px 0 0;
+
+    overflow:visible;
+
+}
+
+.ribbon-wrap::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-18px;
+
+    width:100%;
+
+    height:18px;
+
+    background:inherit;
+
+    clip-path:polygon(0 0,100% 0,92% 100%,8% 100%);
+
+}
+
+.blue{
+    background:#1976d2;
+}
+
+.gold{
+    background:#f5b301;
+}
+
+.red{
+    background:#d62828;
+}
+
+.price-ribbon{
+
+    width:92%;   
+
+    margin:25px auto;
+
+    padding:10px 12px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    color:white;
+
+    position:relative;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+
+}
+
+.price-ribbon::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:-12px;
+
+    width:88%;
+
+    height:14px;
+
+    background:inherit;
+
+    clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);
+
+}
+
+.mulai{
+
+    display:block;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    margin-bottom:5px;
+
+}
+
+.harga-besar{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:2px;
+
+    font-weight:800;
+
+}
+
+.rp{
+
+    font-size:12px;
+
+    margin-bottom:28px;
+
+}
+
+.angka{
+
+    font-size:48px;
+
+    line-height:1;
+
+}
+
+.rb{
+
+    font-size:22px;
+
+    margin-bottom:8px;
+
+}
+
+/* KECILKAN SELURUH ISI KARTU */
+.paket-card{
+
+    zoom:0.75;
+
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header-paket">
+    <a href="index.html" class="back-btn">
+        ←
+    </a>
+
+    <h1 class="judul">Pilih Paket Akses Harga Khusus</h1>
+    </div>
+
+<div class="paket-container">
+
+    <div class="paket-card">
+        
+
+        <div class="ribbon-wrap blue">
+            <h2 class="judul-start">NEXIO START</h2>
+        </div>
+
+        <div class="price-ribbon blue">
+
+            <span class="mulai">Mulai dari</span>
+
+            <div class="harga-besar">
+                <span class="rp">Rp</span>
+                <span class="angka">500</span>
+                <span class="rb">rb</span>
+        </div>
+
+</div>
+        
+        <h4><strong>Cocok untuk :</strong></h4>
+
+        <ul class="paket-list">
+            <li>🏆Seller baru</li>
+            <li>🏆UMKM</li>
+            <li>🏆⁠Yang mau coba dulu</li>
+        </ul>
+
+        <h4><strong>BENEFIT :</strong></h4>
+
+        <ul class="paket-list">
+            <li>✅ Akses harga khusus</li>
+            <li>✅ Mengumpulkan NEXIO points</li>
+            <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
+        </ul>
+
+        <a href="#" class="btn-paket">Mulai Sekarang</a>
+    </div>
+
+    <div class="paket-card">
+        
+
+        <div class="ribbon-wrap gold">
+             <h2 class="judul-start">NEXIO PRO</h2>
+        </div>
+
+        <div class="price-ribbon gold">
+
+    <span class="mulai">Mulai dari</span>
+
+    <div class="harga-besar">
+        <span class="rp">Rp</span>
+        <span class="angka">1.5</span>
+        <span class="rb">jt</span>
+    </div>
+
+</div>
+        
+        <h4><strong>Cocok untuk :</strong></h4>
+
+        <ul class="paket-list">
+            <li>🏆Seller aktif</li>
+            <li>🏆UMKM</li>
+            <li>🏆⁠Pelaku usaha yang rutin belanja</li>
+        </ul>
+
+        <h4><strong>BENEFIT :</strong></h4>
+
+        <ul class="paket-list">
+            <li>✅ Akses harga khusus</li>
+            <li>✅ Mengumpulkan NEXIO points</li>
+            <li>✅ Poin lebih cepat terkumpul</li>
+            <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
+            <li>✅ Prioritas informasi produk baru</li>
+        </ul>
+
+        <a href="#" class="btn-paket">Mulai Sekarang</a>
+    </div>
+
+    <div class="paket-card">
+        
+
+        <div class="ribbon-wrap red">
+            <h2 class="judul-start">NEXIO PRIME</h2>
+        </div>
+
+        <div class="price-ribbon red">
+
+    <span class="mulai">Mulai dari</span>
+
+    <div class="harga-besar">
+        <span class="rp">Rp</span>
+        <span class="angka">3</span>
+        <span class="rb">jt</span>
+    </div>
+
+</div>
+        
+        <h4><strong>Cocok untuk :</strong></h4>
+
+        <ul class="paket-list">
+            <li>🏆Seller aktif</li>
+            <li>🏆Toko</li>
+            <li>🏆⁠Distributor daerah</li>
+            <li>🏆⁠Reseller volume besar</li>
+        </ul>
+
+        <h4><strong>BENEFIT :</strong></h4>
+
+        <ul class="paket-list">
+            <li>✅ Akses harga khusus</li>
+            <li>✅ Mengumpulkan NEXIO points</li>
+            <li>✅ Poin lebih cepat terkumpul</li>
+            <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
+            <li>✅ Prioritas informasi produk baru</li>
+            <li>✅ Priority sourcing produk</li>
+            <li>✅ Akses undian hadiah tahunan</li>
+        </ul>
+
+        <a href="#" class="btn-paket">Mulai Sekarang</a>
+    </div>
+
+   
+</body>
+
+</html> 
