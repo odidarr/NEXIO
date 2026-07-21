@@ -238,6 +238,354 @@ nav a:hover{
 
 }
 
+.cart-btn{
+
+    flex:1;
+
+    margin-top:0;
+
+    padding:12px;
+
+    background:#0d47a1;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.cart-btn:hover{
+
+    background:#1565c0;
+
+}
+
+.toast{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    background:#0d47a1;
+
+    color:white;
+
+    padding:15px 22px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px);
+
+    transition:.35s;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.cart-icon{
+
+    position:relative;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:24px;
+
+}
+
+#cartCount{
+
+    position:absolute;
+
+    top:-10px;
+
+    right:-12px;
+
+    background:#ff2d2d;
+
+    color:white;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+.cart-action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:12px;
+
+}
+
+.qty-control{
+
+    display:none;
+
+    align-items:center;
+
+    gap:8px;
+
+    white-space:nowrap;
+
+}
+
+.qty-control button{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#0d47a1;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.qty-control span{
+
+    min-width:20px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+.cart-action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:12px;
+
+}
+
+.qty-control{
+
+    display:none;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.qty-control button{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    border-radius:6px;
+
+    background:#0d47a1;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+.qty-control span{
+
+    min-width:20px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+.skeleton-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.skeleton-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+}
+
+.skeleton-image{
+
+    width:100%;
+
+    height:300px;
+
+    border-radius:10px;
+
+    background:linear-gradient(
+        90deg,
+        #ececec 25%,
+        #f8f8f8 50%,
+        #ececec 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:shimmer 1.2s infinite;
+
+}
+
+.skeleton-line{
+
+    height:18px;
+
+    border-radius:6px;
+
+    margin-top:15px;
+
+    background:linear-gradient(
+        90deg,
+        #ececec 25%,
+        #f8f8f8 50%,
+        #ececec 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:shimmer 1.2s infinite;
+
+}
+
+.skeleton-line.short{
+
+    width:60%;
+
+}
+
+@keyframes shimmer{
+
+    0%{
+        background-position:200% 0;
+    }
+
+    100%{
+        background-position:-200% 0;
+    }
+
+}
+
+.filter-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:25px 0;
+
+}
+
+.filter-btn{
+
+    padding:10px 18px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:#e5e5e5;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-weight:bold;
+
+}
+
+.filter-btn:hover{
+
+    background:#0d47a1;
+
+    color:white;
+
+}
+
+.filter-btn.active{
+
+    background:#0d47a1;
+
+    color:white;
+
+}
+
 </style>
 </head>
 <body>
@@ -256,6 +604,11 @@ nav a:hover{
     Buka Akses Harga Khusus
 </a>
     </nav>
+
+    <a href="cart.html" class="cart-icon">
+    🛒 <span id="cartCount">0</span>
+</a>
+
 </header>
 
 <div class="back-wrapper">
@@ -266,91 +619,55 @@ nav a:hover{
 
 <section class="products">
 
-    <div class="product-grid">
-
-        <div class="product-card">
-            <img src="image produk/embercororangehd14inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Orange HD (14 inch)</div>
-            <div class="product-price">Rp6.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercorhijau20inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Hijau (20 inch)</div>
-            <div class="product-price">Rp7.500</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercorhitam20inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Hitam (20 inch)</div>
-            <div class="product-price">Rp7.500</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercororangehd20inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Orange HD (20 inch)</div>
-            <div class="product-price">Rp8.500</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercororangeelastis14inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Orange Elastis (14 inch)</div>
-            <div class="product-price">Rp7.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercororangehd18inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Orange HD (18 inch)</div>
-            <div class="product-price">Rp6.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercorhijau18inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Hijau (18 inch)</div>
-            <div class="product-price">Rp6.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="image produk/embercorhijau14inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Hijau (14 inch)</div>
-            <div class="product-price">Rp5.000</div>
-        </div>
-
-        <div class="product-card">
-           <img src="image produk/embercorhitam18inch.jpg" class="product-image">
-            <div class="product-name">Ember Cor Warna Hitam (18 inch)</div>
-            <div class="product-price">Rp6.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="" class="product-image">
-            <div class="product-name">Produk 10</div>
-            <div class="product-price">Rp 100.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="" class="product-image">
-            <div class="product-name">Produk 11</div>
-            <div class="product-price">Rp 100.000</div>
-        </div>
-
-        <div class="product-card">
-            <img src="" class="product-image">
-            <div class="product-name">Produk 12</div>
-            <div class="product-price">Rp 100.000</div>
-        </div>
-
+    <div class="filter-container" id="filterKategori">
     </div>
+
+    <div id="loadingProduk" class="skeleton-grid">
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+    <div class="skeleton-card">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+    </div>
+
+</div>
+
+    <div id="productGrid" class="product-grid"></div>
+    
 
 </section>
 
 <script>
-
-const params =
-    new URLSearchParams(window.location.search);
-
-const keyword =
-    params.get("search");
 
 if(keyword){
 
@@ -410,6 +727,171 @@ if(keyword){
         DAPATKAN AKSES HARGA KHUSUS
     </a>
 </div>
+
+<script>
+
+function tambahKeranjang(nama,harga,id){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const index = cart.findIndex(item=>item.nama===nama);
+
+    if(index>-1){
+
+        cart[index].qty++;
+
+    }else{
+
+        cart.push({
+
+            nama:nama,
+            harga:harga,
+            qty:1
+
+        });
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    updateCartBadge();
+
+    showToast();
+
+    updateQty(id,nama);
+
+}
+
+function updateQty(id, nama){
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const item = cart.find(p => p.nama === nama);
+
+    const box = document.getElementById("qty-"+id);
+
+    if(!box) return;
+
+    if(!item){
+
+        box.style.display = "none";
+        return;
+
+    }
+
+    box.style.display = "flex";
+    box.querySelector("span").innerText = item.qty;
+
+}
+
+function updateCartBadge(){
+
+    const cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+    let total = 0;
+
+    cart.forEach(item=>{
+
+        total += item.qty;
+
+    });
+
+    document.getElementById("cartCount").innerText = total;
+
+}
+
+updateCartBadge();
+
+function showToast(){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+
+        toast.classList.remove("show");
+
+    },2000);
+
+}
+
+function ubahTombol(btn,nama){
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const produk = cart.find(item=>item.nama===nama);
+
+    if(!produk){
+
+        btn.innerHTML="🛒 Tambah ke Keranjang";
+
+        return;
+
+    }
+
+    const qtyBox = document.getElementById("qty-"+nama);
+
+qtyBox.style.display = "flex";
+
+qtyBox.querySelector("span").innerText = produk.qty;
+
+}
+
+function tambahProduk(nama,id){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const item = cart.find(p => p.nama===nama);
+
+    if(item){
+
+        item.qty++;
+
+        localStorage.setItem("cart",JSON.stringify(cart));
+
+        updateQty(id,nama);
+
+        updateCartBadge();
+
+    }
+
+}
+
+function kurangiProduk(nama,id){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const index = cart.findIndex(p => p.nama===nama);
+
+    if(index==-1) return;
+
+    cart[index].qty--;
+
+    if(cart[index].qty<=0){
+
+        cart.splice(index,1);
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    updateQty(id,nama);
+
+    updateCartBadge();
+
+}
+
+</script>
+
+<div id="toast" class="toast">
+    ✅ Produk berhasil ditambahkan ke keranjang
+</div>
+
+<script src="script.js"></script>
+<script src="products.js"></script>
 
 </body>
 </html>
