@@ -72,7 +72,7 @@ body::after {
 
 .paket-card{
     width:280px;
-    min-height:650px; 
+    min-height:670px; 
 
     background:white;
     border-radius:18px;
@@ -403,7 +403,9 @@ h4{
             <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
         </ul>
 
-        <a href="#" class="btn-paket">Mulai Sekarang</a>
+        <a href="#" class="btn-paket" onclick="updatePaket('NEXIO START'); return false;">
+            Mulai Sekarang
+        </a>
     </div>
 
     <div class="paket-card">
@@ -437,13 +439,16 @@ h4{
 
         <ul class="paket-list">
             <li>✅ Akses harga khusus</li>
+            <li>✅ Free Mentoring Class</li>
             <li>✅ Mengumpulkan NEXIO points</li>
             <li>✅ Poin lebih cepat terkumpul</li>
             <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
             <li>✅ Prioritas informasi produk baru</li>
         </ul>
 
-        <a href="#" class="btn-paket">Mulai Sekarang</a>
+        <a href="#" class="btn-paket" onclick="updatePaket('NEXIO PRO'); return false;">
+            Mulai Sekarang
+        </a>
     </div>
 
     <div class="paket-card">
@@ -478,6 +483,7 @@ h4{
 
         <ul class="paket-list">
             <li>✅ Akses harga khusus</li>
+            <li>✅ Free Mentoring Class</li>
             <li>✅ Mengumpulkan NEXIO points</li>
             <li>✅ Poin lebih cepat terkumpul</li>
             <li>✅ Berkesempatan ikut GIVEAWAY bulanan</li>
@@ -486,10 +492,72 @@ h4{
             <li>✅ Akses undian hadiah tahunan</li>
         </ul>
 
-        <a href="#" class="btn-paket">Mulai Sekarang</a>
+        <a href="#" class="btn-paket" onclick="updatePaket('NEXIO PRIME'); return false;">
+            Mulai Sekarang
+        </a>
     </div>
 
-   
+<script>
+
+async function updatePaket(namaPaket){
+
+    const wa = localStorage.getItem("waCustomer");
+
+    const customer = JSON.parse(localStorage.getItem("customer"));
+
+    customer.paket = namaPaket;
+
+    localStorage.setItem("customer", JSON.stringify(customer));
+
+    if(!wa){
+        alert("Data customer tidak ditemukan.");
+        return;
+    }
+
+    try{
+
+        await fetch("https://script.google.com/macros/s/AKfycbzdIreJXWc88iVJCnMOaH5hy-erpRIkA5IaNf5iKTDapEjBMyuOVW934r8e88kREJuh/exec",{
+
+            method:"POST",
+
+            mode:"no-cors",
+
+            headers:{
+                "Content-Type":"text/plain;charset=utf-8"
+            },
+
+            body:JSON.stringify({
+
+                action:"updatePaket",
+
+                wa:wa,
+
+                paket:namaPaket
+
+            })
+
+        });
+
+        alert("Paket berhasil dipilih!");
+
+        // Hapus kalau tidak ingin menyimpan WA lagi
+        localStorage.removeItem("waCustomer");
+
+        // Ganti dengan tujuanmu
+        window.location.href="products.html";
+
+    }catch(err){
+
+        alert("Gagal menyimpan paket.");
+
+        console.error(err);
+
+    }
+
+}
+
+</script>
+    
 </body>
 
 </html> 
