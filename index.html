@@ -1126,43 +1126,50 @@ nav a:hover{
 
 @media (max-width:768px){
 
-    .container{
+    header{
+
+        flex-direction:column;
+
         padding:15px;
+
+        gap:15px;
+
     }
 
-    .hero{
-        padding:40px 20px;
+    nav{
+
+        display:flex;
+
+        justify-content:center;
+
+        gap:25px;
+
+        flex-wrap:wrap;
+
     }
 
-    .about{
-        padding:40px 20px;
-    }
+    .search-container{
 
-    .products{
-        padding:30px 15px;
-    }
-
-    .product-grid{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-    .product-card{
-        margin:0 auto;
         width:100%;
-        max-width:350px;
+
+        margin:10px 0;
+
     }
 
-    h1{
-        font-size:30px;
+    .search-bar{
+
+        width:100%;
+
     }
 
-    h2{
-        font-size:24px;
-    }
+    .signup-btn{
 
-    p{
-        line-height:1.7;
+        width:100%;
+
+        max-width:250px;
+
+        margin:auto;
+
     }
 
 }
