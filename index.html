@@ -1126,68 +1126,53 @@ nav a:hover{
 
 @media (max-width:768px){
 
+    /* Header */
     header{
-
-        flex-direction:column;
-
-        padding:15px;
-
-        gap:15px;
-
-    }
-
-    nav{
-
         display:flex;
+        flex-direction:column;
+        align-items:center;
+        padding:20px 15px 35px;
+    }
 
+    /* Logo di tengah */
+    .logo-section{
+        width:100%;
+        display:flex;
         justify-content:center;
-
-        gap:25px;
-
-        flex-wrap:wrap;
-
-    }
-
-    .search-container{
-
-        width:100%;
-
-        margin:10px 0;
-
-    }
-
-    .search-bar{
-
-        width:100%;
-
-    }
-
-    .signup-btn{
-
-        width:100%;
-
-        max-width:250px;
-
-        margin:auto;
-
-        padding: 12px 18px;
-
-        font-size:15px;
-
-    }
-
-    .slider{
-
-        margin-top:20px;
-
+        align-items:center;
+        margin-bottom:25px;
     }
 
     .logo{
-
-        width:170px;
-
+        width:190px;
         height:auto;
+    }
 
+    /* Menu */
+    nav{
+        display:flex;
+        justify-content:center;
+        gap:28px;
+        margin-bottom:25px;
+    }
+
+    /* Search */
+    .search-container{
+        width:100%;
+        margin-top:20px;
+        margin-bottom:25px;
+    }
+
+    .search-bar{
+        width:100%;
+    }
+
+    /* Tombol merah */
+    .signup-btn{
+        display:block;
+        width:100%;
+        max-width:280px;
+        margin:20px auto 0;
     }
 
 }
